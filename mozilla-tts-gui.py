@@ -11,7 +11,6 @@ import subprocess
 import sys
 import playsound
 from playsound import playsound
-#from shlex import join
 from TTS.utils.synthesizer import Synthesizer
 from TTS.utils.manage import ModelManager
 import pathlib
@@ -51,8 +50,6 @@ def generate():
         synthesizer = Synthesizer(model_path, config_path, vocoder_path, vocoder_config_path, cudacheckbutton.instate(['selected']))
         wav = synthesizer.tts(inputbox.get("1.0","end-1c"))
         synthesizer.save_wav(wav, "mozilla-tts-output/generated.wav")
-        #print(join(['python', 'TTS/bin/synthesize.py', '--text', f'{inputbox.get("1.0","end-1c")}', '--model_name', f'tts_models/{ttsmodelbox.get()}', '--vocoder_name', f'vocoder_models/{vocodermodelbox.get()}', '--use_cuda', str(cudacheckbutton.instate(['selected'])), '--out_path', 'mozilla-tts-output', '--filename', 'generated.wav']))
-        #subprocess.run(['python', 'TTS/bin/synthesize.py', '--text', f'{inputbox.get("1.0","end-1c")}', '--model_name', f'tts_models/{ttsmodelbox.get()}', '--vocoder_name', f'vocoder_models/{vocodermodelbox.get()}', '--use_cuda', str(cudacheckbutton.instate(['selected'])), '--out_path', 'mozilla-tts-output', '--filename', 'generated.wav'])
         playsound("mozilla-tts-output/generated.wav")
         generatebutton.config(state="enabled")
         exportbutton.config(state="enabled")
@@ -107,8 +104,6 @@ def exportaudio():
     synthesizer = Synthesizer(model_path, config_path, vocoder_path, vocoder_config_path, cudacheckbutton.instate(['selected']))
     wav = synthesizer.tts(inputbox.get("1.0","end-1c"))
     synthesizer.save_wav(wav, str(f.name))
-    #print(join(['python', 'TTS/bin/synthesize.py', '--text', f'{inputbox.get("1.0","end-1c")}', '--model_name', f'tts_models/{ttsmodelbox.get()}', '--vocoder_name', f'vocoder_models/{vocodermodelbox.get()}', '--use_cuda', str(cudacheckbutton.instate(['selected'])), '--out_path', 'mozilla-tts-output', '--filename', 'generated.wav']))
-    #subprocess.run(['python', 'TTS/bin/synthesize.py', '--text', f'{inputbox.get("1.0","end-1c")}', '--model_name', f'tts_models/{ttsmodelbox.get()}', '--vocoder_name', f'vocoder_models/{vocodermodelbox.get()}', '--use_cuda', str(cudacheckbutton.instate(['selected'])), '--out_path', 'mozilla-tts-output', '--filename', 'generated.wav'])
     generatebutton.config(state="enabled")
     exportbutton.config(state="enabled")
     print("All done!")
