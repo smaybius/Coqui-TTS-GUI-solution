@@ -1,6 +1,6 @@
 # Mozilla TTS GUI solution
 Graphical user interface by AceOfSpadesProduc100 for using TTS and vocoder models in the form of a text editor, made using Tkinter.
-![Preview]("./Screenshot 2021-03-13 155111.png")
+![Preview](./Screenshot_2021-03-13_155111.png)
 
 ## How to install
 - Download or clone from this repository: https://github.com/mozilla/TTS
