@@ -6,7 +6,6 @@ Graphical user interface by AceOfSpadesProduc100 for using TTS and vocoder model
 - Download or clone from this repository: https://github.com/mozilla/TTS
 - Run the following under "Install TTS" in the repostory's readme, and then run the following below:
 ```bash
-pip install tkinter
 pip install playsound
 ```
 - Copy mozilla-tts-gui.py into the TTS repository's folder
