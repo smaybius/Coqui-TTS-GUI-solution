@@ -1,4 +1,4 @@
-# Mozilla TTS GUI solution
+# Coqui TTS GUI solution
 Graphical user interface by AceOfSpadesProduc100 for using TTS and vocoder models in the form of a text editor, made using Tkinter.
 ![Preview](./Screenshot_2021-03-13_155111.png)
 
