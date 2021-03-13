@@ -11,7 +11,7 @@ pip install playsound
 ```
 - Copy mozilla-tts-gui.py into the TTS repository's folder
 ## How to use
-WARNING: DO NOT run this from IDLE or directly in Python such as double-clicking, it will be stuck loading. To be safe, run the following:
+WARNING: DO NOT run this from IDLE or directly in Python such as double-clicking the file, it will be stuck loading. To be safe, run the following:
 ```bash
 python mozilla-tts-gui.py
 ```
