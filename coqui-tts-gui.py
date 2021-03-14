@@ -38,15 +38,15 @@ def generate():
         model_name = 'tts_models/' + ttsmodelbox.get()
         print(f'model_name is {model_name}')
         # for dev
-        #model_path, config_path, model_item = manager.download_model(model_name)
+        model_path, config_path, model_item = manager.download_model(model_name)
         # for master
-        model_path, config_path = manager.download_model(model_name)
+        #model_path, config_path = manager.download_model(model_name)
         vocoder_name = 'vocoder_models/' + vocodermodelbox.get()
         print(f'vocoder_name is {vocoder_name}')
         # for dev
-        #vocoder_path, vocoder_config_path, model_item = manager.download_model(vocoder_name)
+        vocoder_path, vocoder_config_path, model_item = manager.download_model(vocoder_name)
         # for master
-        vocoder_path, vocoder_config_path = manager.download_model(vocoder_name)
+        #vocoder_path, vocoder_config_path = manager.download_model(vocoder_name)
         synthesizer = Synthesizer(model_path, config_path, vocoder_path, vocoder_config_path, cudacheckbutton.instate(['selected']))
         wav = synthesizer.tts(inputbox.get("1.0","end-1c"))
         synthesizer.save_wav(wav, "coqui-tts-output/generated.wav")
@@ -92,15 +92,15 @@ def exportaudio():
     model_name = 'tts_models/' + ttsmodelbox.get()
     print(f'model_name is {model_name}')
     # for dev
-    #model_path, config_path, model_item = manager.download_model(model_name)
+    model_path, config_path, model_item = manager.download_model(model_name)
     # for master
-    model_path, config_path = manager.download_model(model_name)
+    #model_path, config_path = manager.download_model(model_name)
     vocoder_name = 'vocoder_models/' + vocodermodelbox.get()
     print(f'vocoder_name is {vocoder_name}')
     # for dev
-    #vocoder_path, vocoder_config_path, model_item = manager.download_model(vocoder_name)
+    vocoder_path, vocoder_config_path, model_item = manager.download_model(vocoder_name)
     # for master
-    vocoder_path, vocoder_config_path = manager.download_model(vocoder_name)
+    #vocoder_path, vocoder_config_path = manager.download_model(vocoder_name)
     synthesizer = Synthesizer(model_path, config_path, vocoder_path, vocoder_config_path, cudacheckbutton.instate(['selected']))
     wav = synthesizer.tts(inputbox.get("1.0","end-1c"))
     synthesizer.save_wav(wav, str(f.name))
@@ -132,7 +132,7 @@ def checkopentext():
 # Creating tkinter window
 window = tk.Tk()
 window.geometry('')
-window.title("Mozilla TTS GUI")
+window.title("Coqui TTS GUI")
 window.resizable(False, False)
 # Label 
 ttk.Label(window, text = "Enter text here",  
