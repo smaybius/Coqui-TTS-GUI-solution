@@ -14,3 +14,6 @@ WARNING: DO NOT run this from IDLE or directly in Python such as double-clicking
 ```bash
 python coqui_tts_gui.py
 ```
+## Major TODOs
+- Consist the models comboboxes of what's read from models.json instead of hardcoding them
+- Solve all Linter errors in the pull request for TTS
