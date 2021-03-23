@@ -5,7 +5,10 @@ Graphical user interface by AceOfSpadesProduc100 for using TTS and vocoder model
 ## How to use
 - Download or clone from this repository: https://github.com/coqui-ai/TTS
 - Copy gui.py and synthesize.py into TTS/bin, overwriting the existing synthesize.py
-- Install from source as explained in the repository's readme `pip install -e .`
+- Install from source as explained in the repository's readme: 
+```bash
+pip install -e .
+```
 - Run the following command:
 ```bash
 tts --start_gui
