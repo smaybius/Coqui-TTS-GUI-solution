@@ -10,6 +10,10 @@ This is an addon for TTS 0.0.10, as it should hopefully already be part of the v
 ```bash
 pip install -e .
 ```
+- Install simpleaudio:
+```bash
+pip install simpleaudio
+```
 - Run the following command:
 ```bash
 tts --start_gui
