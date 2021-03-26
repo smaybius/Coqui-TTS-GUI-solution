@@ -10,9 +10,6 @@ from TTS.utils.synthesizer import Synthesizer
 from TTS.utils.manage import ModelManager
 from pathlib import Path
 import os
-import errno
-import io
-import json
 import simpleaudio as sa
 
 def generate():
