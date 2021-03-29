@@ -33,15 +33,15 @@ def generate():
         model_name = 'tts_models/' + ttsmodelbox.get()
         print(f'model_name is {model_name}')
         # for dev
-        model_path, config_path, model_item = manager.download_model(model_name)
+        #model_path, config_path, model_item = manager.download_model(model_name)
         # for master
-        #model_path, config_path = manager.download_model(model_name)
+        model_path, config_path, _ = manager.download_model(model_name)
         vocoder_name = 'vocoder_models/' + vocodermodelbox.get()
         print(f'vocoder_name is {vocoder_name}')
         # for dev
-        vocoder_path, vocoder_config_path, model_item = manager.download_model(vocoder_name)
+        #vocoder_path, vocoder_config_path, model_item = manager.download_model(vocoder_name)
         # for master
-        #vocoder_path, vocoder_config_path = manager.download_model(vocoder_name)
+        vocoder_path, vocoder_config_path, _ = manager.download_model(vocoder_name)
         synthesizer = Synthesizer(model_path, config_path, vocoder_path, vocoder_config_path, cudacheckbutton.instate(['selected']))
         wav = synthesizer.tts(inputbox.get("1.0", "end-1c"))
         synthesizer.save_wav(wav, "coqui-tts-output/generated.wav")
@@ -74,6 +74,16 @@ def savetextandopen():
     inputbox.edit_modified(False)
     opentext()
 
+def savetextandclose():
+    f = filedialog.asksaveasfile(mode='w', defaultextension=".txt", filetypes=[("Text files", ".txt")])
+    if f is None: # asksaveasfile return `None` if dialog closed with "cancel".
+        return
+    text2save = str(inputbox.get("1.0", "end-1c")) # starts from `1.0`, not `0.0`
+    f.write(text2save)
+    f.close() # `()` was missing.
+    inputbox.edit_modified(False)
+    window.destroy()
+
 def exportaudio():
     if inputbox.get("1.0", "end-1c") == "":
         messagebox.showerror(message="TTS will give a division by zero error if the text field is blank.")
@@ -92,15 +102,15 @@ def exportaudio():
     model_name = 'tts_models/' + ttsmodelbox.get()
     print(f'model_name is {model_name}')
     # for dev
-    model_path, config_path, model_item = manager.download_model(model_name)
+    #model_path, config_path, model_item = manager.download_model(model_name)
     # for master
-    #model_path, config_path = manager.download_model(model_name)
+    model_path, config_path, _ = manager.download_model(model_name)
     vocoder_name = 'vocoder_models/' + vocodermodelbox.get()
     print(f'vocoder_name is {vocoder_name}')
     # for dev
-    vocoder_path, vocoder_config_path, model_item = manager.download_model(vocoder_name)
+    #vocoder_path, vocoder_config_path, model_item = manager.download_model(vocoder_name)
     # for master
-    #vocoder_path, vocoder_config_path = manager.download_model(vocoder_name)
+    vocoder_path, vocoder_config_path, _ = manager.download_model(vocoder_name)
     synthesizer = Synthesizer(model_path, config_path, vocoder_path, vocoder_config_path, cudacheckbutton.instate(['selected']))
     wav = synthesizer.tts(inputbox.get("1.0", "end-1c"))
     synthesizer.save_wav(wav, str(f.name))
@@ -112,28 +122,42 @@ def opentext():
     file = filedialog.askopenfile(mode='rt', defaultextension=".txt", filetypes=[("Text files", ".txt")])
     if file is None: # asksaveasfile return `None` if dialog closed with "cancel".
         return
+    inputbox.delete("1.0", "end")
     contents = file.read()
     inputbox.insert('1.0', contents)
     inputbox.edit_modified(False)
     file.close()
 
 def checkopentext():
-    if inputbox.edit_modified() == True:
+    if inputbox.edit_modified():
         response = messagebox.askyesnocancel(message="You have unsaved changes. Do you want to save?")
-        if response == True:
+        if response:
             savetextandopen()
-        elif response == False:
-            opentext()
-        else:
+        elif response is None:
             return
+        elif not response:
+            opentext()
     else:
         opentext()
+
+def on_closing():
+    if inputbox.edit_modified():
+        response = messagebox.askyesnocancel(message="You have unsaved changes. Do you want to save?")
+        if response:
+            savetextandclose()
+        elif response is None:
+            return
+        elif not response:
+            window.destroy()
+    else:
+        window.destroy()
 
 # Creating tkinter window
 window = tk.Tk()
 window.geometry('')
 window.title("Coqui TTS GUI")
 window.resizable(False, False)
+window.protocol("WM_DELETE_WINDOW", on_closing)
 
 # Label
 ttk.Label(window, text="Enter text here", font=("Tahoma", 10)).grid(column=0, columnspan=3, row=12, padx=10, pady=12)
