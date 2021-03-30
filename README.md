@@ -24,7 +24,4 @@ pip install simpleaudio
 tts --start_gui
 ```
 - NOTE: It will take a while, especially if you don't have a CUDA-compatible GPU. It's advised to pay attention to your CLI to see what's happening.
-- DEV NOTE: Changes to synthesize.py may require changes to gui.py.
-
-## Major TODOs
-- Solve all Linter errors in the pull request for TTS
+- DEV NOTE: Changes to synthesize.py and manage.py may require changes to gui.py.
