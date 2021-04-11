@@ -23,5 +23,5 @@ tts --start_gui
 sudo apt install python3-tk
 sudo apt-get install -y python3-dev libasound2-dev
 ```
-- NOTE: It will take a while, especially if you don't have a CUDA-compatible GPU. It's advised to pay attention to your CLI to see what's happening.
+- NOTE: It will take a while to generate audio, especially if you don't have a CUDA-compatible GPU. It's advised to pay attention to your CLI to see what's happening.
 - DEV NOTE: Changes to synthesize.py and manage.py may require changes to gui.py.
