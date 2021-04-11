@@ -6,11 +6,6 @@ This is an addon for TTS 0.0.10, as it should hopefully already be part of the v
 ## How to use
 - Download or clone from this repository: https://github.com/coqui-ai/TTS
 - Copy gui.py and synthesize.py into TTS/bin, overwriting the existing synthesize.py
-- (Linux users) Install the following:
-```bash
-sudo apt install python3-tk
-sudo apt-get install -y python3-dev libasound2-dev
-```
 - Install from source as explained in the repository's readme: 
 ```bash
 pip install -e .
@@ -22,6 +17,11 @@ pip install simpleaudio
 - Run the following command:
 ```bash
 tts --start_gui
+```
+- (Linux users) Install the following first:
+```bash
+sudo apt install python3-tk
+sudo apt-get install -y python3-dev libasound2-dev
 ```
 - NOTE: It will take a while, especially if you don't have a CUDA-compatible GPU. It's advised to pay attention to your CLI to see what's happening.
 - DEV NOTE: Changes to synthesize.py and manage.py may require changes to gui.py.
