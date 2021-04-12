@@ -23,5 +23,6 @@ tts --start_gui
 sudo apt install python3-tk
 sudo apt-get install -y python3-dev libasound2-dev
 ```
+- (WSL users) This program requires a desktop environment (https://gist.github.com/Ta180m/e1471413f62e3ed94e72001d42e77e22), as you'll get errors about display variables not being set without it.
 - NOTE: It will take a while to generate audio, especially if you don't have a CUDA-compatible GPU. It's advised to pay attention to your CLI to see what's happening.
 - DEV NOTE: Changes to synthesize.py and manage.py may require changes to gui.py.
