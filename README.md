@@ -1,6 +1,6 @@
 # Coqui TTS GUI solution
 Graphical user interface by AceOfSpadesProduc100 for using released TTS and vocoder models in the form of a text editor, made using Tkinter.
-This is an addon for TTS 0.0.10, as it should hopefully already be part of the version after it.
+This is an addon for TTS 0.0.10, as it should hopefully already be part of a version after it.
 ![Preview](./Screenshot_2021-03-22_173624.png)
 
 ## How to use
